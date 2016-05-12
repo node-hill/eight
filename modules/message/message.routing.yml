@@ -1,0 +1,7 @@
+message.content:
+  path: '/user/{user}/message'
+  defaults:
+    _title: 'Send message'
+    _form: '\Drupal\message\Form\MessageForm'
+  requirements:
+    _access: 'TRUE'
