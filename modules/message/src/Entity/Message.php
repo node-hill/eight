@@ -55,6 +55,35 @@ class Message extends ContentEntityBase implements ContentEntityInterface {
         'type' => 'string_textfield',
       ));
 
+    /**
+     * This is the message field. It uses a long_string as its data type since
+     * it should be able to handle a long string of data.
+     *
+     * The field has a label and a description that are passed through Drupal´s
+     * translation system.
+     *
+     * Display options are set for the field in form and view modes. These
+     * options define how the field will be displayed when rendered as a form
+     * and when rendered as content.
+     */
+    $fields['message'] = BaseFieldDefinition::create('string_long')
+      ->setLabel(new TranslatableMarkup('Message'))
+      ->setDescription(new TranslatableMarkup('The main content of the message.'))
+      ->setRequired(TRUE)
+      ->setDisplayOptions('form', [
+        'type' => 'string_textarea',
+        'weight' => 0,
+        'settings' => array(
+          'rows' => 12,
+        ),
+      ])
+      ->setDisplayOptions('view', [
+        'type' => 'string',
+        'weight' => 0,
+        'label' => 'above',
+      ]);
+
+
     return $fields;
   }
 }
