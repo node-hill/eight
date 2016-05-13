@@ -28,6 +28,22 @@ class Message extends ContentEntityBase implements ContentEntityInterface {
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields = parent::baseFieldDefinitions($entity_type);
 
+    /**
+     * This is the subject field. It has a data type of "string" since it only
+     * needs to handle a limited length of data.
+     *
+     * The subject field has a label and a description that are both passed
+     * through Drupal's translation system to allow translation.
+     *
+     * The field is set to required since a subject must be defined to create
+     * a new message.
+     *
+     * The field has a default "max_length" of 255 since this is the maximum
+     * allowed length of a string field in SQL.
+     *
+     * The field has display options set for the form render mode so that it
+     * will use a textfield when rendered.
+     */
     $fields['subject'] = BaseFieldDefinition::create('string')
       ->setLabel(new TranslatableMarkup('Subject'))
       ->setDescription(new TranslatableMarkup('The subject of the message.'))
