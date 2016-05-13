@@ -29,7 +29,7 @@ class Message extends ContentEntityBase implements ContentEntityInterface {
     $fields = parent::baseFieldDefinitions($entity_type);
 
     /**
-     * This is the subject field. It has a data type of "string" since it only
+     * This is the subject field. It uses a field type of "string" since it only
      * needs to handle a limited length of data.
      *
      * The subject field has a label and a description that are both passed
@@ -56,7 +56,7 @@ class Message extends ContentEntityBase implements ContentEntityInterface {
       ));
 
     /**
-     * This is the message field. It uses a long_string as its data type since
+     * This is the message field. It uses a long_string as its field type since
      * it should be able to handle a long string of data.
      *
      * The field has a label and a description that are passed through Drupal´s
