@@ -23,7 +23,8 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 class Message extends ContentEntityBase implements ContentEntityInterface {
 
   /**
-   * {@inheritdoc}
+   * This method provides a way to define fields for an entity. Each field
+   * corresponds to a field plugin available in Drupal.
    */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields = parent::baseFieldDefinitions($entity_type);
@@ -84,9 +85,10 @@ class Message extends ContentEntityBase implements ContentEntityInterface {
       ]);
 
     /**
-     * This field contains a reference to the user that sent the message. The
-     * field uses the "entity_reference" field as it's base since this field
-     * allows us to connect various entities with each other.
+     * This field contains a reference to the user that sent the message.
+     *
+     * The field uses the "entity_reference" field as it's base since this
+     * field allows us to connect various entities with each other.
      */
     $fields['sender_id'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(new TranslatableMarkup('Sender ID'))
@@ -95,6 +97,7 @@ class Message extends ContentEntityBase implements ContentEntityInterface {
 
     /**
      * This field contains a reference to the user that recieved the message.
+     *
      * The field uses the "entity_reference" field as it's base since this
      * field allows us to connect various entities with each other.
      */
