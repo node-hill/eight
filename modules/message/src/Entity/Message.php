@@ -56,7 +56,7 @@ class Message extends ContentEntityBase implements ContentEntityInterface {
       ));
 
     /**
-     * This is the message field. It uses a long_string as its field type since
+     * This is the message field. It uses a "long_string" as its field type since
      * it should be able to handle a long string of data.
      *
      * The field has a label and a description that are passed through Drupal´s
@@ -83,6 +83,25 @@ class Message extends ContentEntityBase implements ContentEntityInterface {
         'label' => 'above',
       ]);
 
+    /**
+     * This field contains a reference to the user that sent the message. The
+     * field uses the "entity_reference" field as it's base since this field
+     * allows us to connect various entities with each other.
+     */
+    $fields['sender_id'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(new TranslatableMarkup('Sender ID'))
+      ->setDescription(new TranslatableMarkup('A reference to the user that sent the message.'))
+      ->setSetting('target_type', 'user');
+
+    /**
+     * This field contains a reference to the user that recieved the message.
+     * The field uses the "entity_reference" field as it's base since this
+     * field allows us to connect various entities with each other.
+     */
+    $fields['recipient_id'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(new TranslatableMarkup('Recipient ID'))
+      ->setDescription(new TranslatableMarkup('A reference to the user that recieved the message.'))
+      ->setSetting('target_type', 'user');
 
     return $fields;
   }
